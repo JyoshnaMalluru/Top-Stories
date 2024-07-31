@@ -1,0 +1,41 @@
+<% layout('/layouts/boilerplate') -%> 
+<style>
+  .card {
+    height: 400px;
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
+    margin: 20px;
+  }
+  .card-header {
+    height :100px;
+    align-content: center;
+  }
+  .card-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: end;
+    margin: 20px;
+  }
+  .card-body a {
+    align-self: baseline;
+  }
+</style>
+<% for(let news of articles){ %>
+  <div class="card text-center">
+    <div class="card-header">
+        <h2 data-name="card"><%= news.author %></h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"><%= news.title %></h5>
+        <a href="<%= news.url %>" class="btn btn-secondary">More Details</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+      <h6>Published On : <%= news.publishedAt.toString().split("T")[0] %></h6>
+      <h6 class="card-source">Source : <%= news.source.name %></h6>
+    </div>
+  </div>
+  
+<% } %>
