@@ -3,9 +3,23 @@
       <a class="navbar-brand" href="/">
         <h1 class="d-inline-block align-text-top"><i class="fa-solid fa-newspaper"></i>&nbsp;Top Stories</h1>
      </a>
-      <form class="d-flex ms-auto" role="search">
+      <form class="d-flex ms-auto" role="search" id="searchForm">
         <input class="form-control me-2" id="searchBar" type="search" placeholder="NewsPaper" aria-label="Search">
         <button class="btn btn-secondary me-3" type="submit">Search</button>
       </form> 
     </div>
   </nav>
+  <script>
+    const form = document.getElementById('searchForm');
+    const searchBar = document.getElementById('searchBar');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const searchQuery = searchBar.value.trim();
+      if (searchQuery) {
+        form.action = `/${searchQuery}`;
+        form.submit();
+      } else {
+        alert('Please enter a search term.');
+      }
+    });
+  </script>
