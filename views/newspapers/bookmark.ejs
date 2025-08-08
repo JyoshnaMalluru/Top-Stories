@@ -1,0 +1,72 @@
+<% layout('/layouts/boilerplate') -%>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">🔖 Bookmarked Articles</h2>
+  <div id="bookmarksContainer" class="row row-cols-1 row-cols-md-2 g-4">
+  </div>
+</div>
+
+<style>
+  .card1{
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: #f8f9fa;
+    color: black;
+  }
+  .btn-group-custom1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+
+  .card-title1 {
+    min-height: 60px;
+  }
+
+  .card-body1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+</style>
+
+<script>
+  const container = document.getElementById('bookmarksContainer');
+  const bookmarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+
+  if (bookmarks.length === 0) {
+    container.innerHTML = "<h3 class='text-center'>No bookmarks yet.</h3>";
+  } else {
+    bookmarks.forEach(news => {
+      const col = document.createElement('div');
+      col.className = "col";
+
+      col.innerHTML = `
+        <div class="card1 h-100">
+          <div class="card-body1 text-center">
+            <h5 class="card-title1">${news.title}</h5>
+            <div class="btn-group-custom1">
+              <a href="${news.url}" class="btn btn-secondary" target="_blank">Read More</a>
+              <button class="btn btn-outline-danger" onclick="removeBookmark('${news.url}')">Remove</button>
+            </div>
+          </div>
+        </div>
+      `;
+      container.appendChild(col);
+    });
+  }
+
+  function removeBookmark(url) {
+    let bookmarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+    bookmarks = bookmarks.filter(item => item.url !== url);
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+    location.reload();
+  }
+</script>

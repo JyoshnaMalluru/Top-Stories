@@ -1,85 +1,32 @@
-<% layout('/layouts/boilerplate') -%> 
-<style>
-  .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px auto;
-    max-width: 1200px;
-  }
-  .card {
-    height: auto;
-    width: 100%;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    margin: 20px auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+ <% layout('/layouts/boilerplate') -%> 
 
-  .card-header, .card-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .card-body {
-    padding: 20px;
-    text-align: center;
-  }
-
-  .card-body h5 {
-    font-size: 1.2em;
-    margin-bottom: 15px;
-  }
-
-  .card-body a {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    text-decoration: none;
-    background-color: #6c757d;
-    color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-
-  .card-body a:hover {
-    background-color: #5a6268;
-  }
-
-  .card-footer h6 {
-    font-size: 0.9em;
-    margin: 5px 0;
-  }
-
-  @media screen and (min-width: 992px) {
-    .card {
-      width: calc(50%-10px);
-    }
-  }
-</style>
 <div class="cards-container" id="newsContainer">
-<% for(let news of data){ %>
- <% if(name == news.source){ %>
-    <div class="card text-center">
-      <div class="card-header">
+  <div class="container d-flex justify-content-center mt-3" id="alert-area" style="margin-top: 20px;">
+  </div>
+  <% for(let news of data){ %>
+    <% if(name == news.source){ %>
+      <div class="card">
+        <div class="card-header">
           <h2 data-name="card"><%= news.source %></h2>
-      </div>
-      <div class="card-body">
+        </div>
+        <div class="card-body">
           <h5 class="card-title"><%= news.title %></h5>
-          <a href="<%= news.url %>" class="btn btn-secondary">More Details</a>
+          <a href="<%= news.url %>" target="_blank"class="btn btn-secondary moredetails">More Details</a>
+          <button class="btn btn-outline-secondary bookmark-btn"
+                  data-title="<%= news.title %>"
+                  data-url="<%= news.url %>"
+                  data-source="<%= news.source %>"
+                  data-date="<%= news.published_at %>"
+                  onclick="toggleBookmark(this)">
+            🔖
+          </button>
+        </div>
+        <div class="card-footer">
+          <h6>Published On: <%= news.published_at.toString().split("T")[0] %></h6>
+          <h6>Source: <%= news.source %></h6>
+        </div>
       </div>
-      <div class="card-footer text-body-secondary">
-        <h6>Published On : <%= news.published_at.toString().split("T")[0] %></h6>
-        <h6 class="card-source">Source : <%= news.source %></h6>
-      </div>
-    </div>
     <% } %>
   <% } %>
 </div>
-  
+

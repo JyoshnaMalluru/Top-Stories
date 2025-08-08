@@ -1,4 +1,5 @@
-body {
+body .dark-mode,
+.dark-mode {
     font-family: "Mukta", sans-serif !important;
     margin: 0;
     padding: 0;
@@ -6,6 +7,7 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    padding-top: 70px;
 }
 h1 {
     font-size: 40px;
@@ -24,4 +26,128 @@ a{
 nav {
     background-color: #EEEDE7;
     width: 100vw;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .navbar,
+.dark-mode nav {
+  background-color: #1e1e1e !important;
+}
+
+.dark-mode h1,
+.dark-mode .navbar a,
+.dark-mode .card-title,
+.dark-mode .card-header,
+.dark-mode .card-footer {
+  color: white !important;
+}
+
+.dark-mode .card-header,
+.dark-mode .card-footer,
+.dark-mode .card-body,
+.dark-mode .card-title{
+    color: #121212 !important;
+}
+
+html, body {
+  width: 100%;
+}
+body {
+  padding-top: 70px;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+  }
+  .card {
+    height: auto;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-header, .card-footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .card-body {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .card-body h5 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+
+  .card-body a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .card-body a:hover {
+    background-color: #5a6268;
+  }
+
+  .card-footer h6 {
+    font-size: 0.9em;
+    margin: 5px 0;
+  }
+
+  @media screen and (min-width: 992px) {
+    .card {
+      width: calc(50% - 10px);
+    }
+  }
+  .bookmark-btn {
+    padding: 0.7rem;
+  }
+  .more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+ .moredetails {
+    margin: 0rem !important;
+ }
+ .bookmarked {
+  background-color: gray;
+  color: white;
+  border-color: gray;
+}
+/* .container {
+  position: fixed;
+} */
+#alert-area {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  width: auto;
+  max-width: 90%;
 }

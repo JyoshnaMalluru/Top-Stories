@@ -1,6 +1,5 @@
 require('dotenv').config();
 const apiKey = process.env.API_KEY;
-// const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
 const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&countries=in`
 let newsData = null;
 
